@@ -49,7 +49,7 @@ func main() {
 }
 
 func parseArgs() (period, command, keyword string) {
-	p := flag.String("past", "", "Specify time period to search for article. (week, month, year, default=month)")
+	p := flag.String("past", "", "Specify time period to search for article. (day, week, month, default=month)")
 	flag.Parse()
 	return *p, flag.Arg(0), flag.Arg(1)
 }
