@@ -16,11 +16,14 @@ func main() {
 	}
 	if command == "show" {
 		// 登録単語と期間で検索する
+		if period == "" {
+			period = "month"
+		}
 	}
 }
 
 func parseArgs() (period, command, keyword string) {
-	p := flag.String("past", "", "Specify time period to search for article (default=a month)")
+	p := flag.String("past", "", "Specify time period to search for article. (week, month, year, default=month)")
 	flag.Parse()
 	return *p, flag.Arg(0), flag.Arg(1)
 }
