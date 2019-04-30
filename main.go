@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	// 引数をパース
+	// OK 引数をパース
+	// 引数でコントローラー
 	// API叩く
 	// 表示する
 	period, command, keyword := parseArgs()
