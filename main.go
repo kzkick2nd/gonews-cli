@@ -7,11 +7,16 @@ import (
 
 func main() {
 	// OK 引数をパース
-	// 引数でコントローラー
+	// OK 引数でコントローラー
 	// API叩く
 	// 表示する
 	period, command, keyword := parseArgs()
-	fmt.Println(period, command, keyword)
+	if command == "subscribe" {
+		// 登録単語を追加する
+	}
+	if command == "show" {
+		// 登録単語と期間で検索する
+	}
 }
 
 func parseArgs() (period, command, keyword string) {
