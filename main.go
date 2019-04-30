@@ -8,6 +8,7 @@ import (
 func main() {
 	// OK 引数をパース
 	// OK 引数でコントローラー
+	// 登録単語リスト（読み書き）
 	// API叩く
 	// 表示する
 	period, command, keyword := parseArgs()
