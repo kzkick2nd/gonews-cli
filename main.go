@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"os"
@@ -39,6 +40,11 @@ func main() {
 		if period == "" {
 			period = "month"
 		}
+
+		keywords, _ := readKeywords(listFilePath)
+		for _, v := range keywords {
+			fmt.Println(v)
+		}
 	}
 }
 
@@ -56,4 +62,20 @@ func writeKeywords(path, keyword string) error {
 	defer w.Close()
 	_, err = fmt.Fprintf(w, " %s\n", keyword)
 	return err
+}
+
+func readKeywords(path string) ([]string, error) {
+	var keywords []string
+	f, err := os.Open(path)
+	if err != nil {
+		return keywords, err
+	}
+	defer f.Close()
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		keywords = append(keywords, scanner.Text())
+	}
+
+	return keywords, nil
 }
