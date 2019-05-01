@@ -13,4 +13,4 @@ Find news with registered words.
 
 ## `show` OPTION
 
-        --past day, week, month, (default=month)
+        $ gonews --past=[day, week, month, (default=month)] show
