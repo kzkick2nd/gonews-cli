@@ -80,7 +80,7 @@ func writeKeywords(path, keyword string) error {
 		return err
 	}
 	defer w.Close()
-	_, err = fmt.Fprintf(w, " %s\n", keyword)
+	_, err = fmt.Fprintf(w, "%s\n", keyword)
 	if err != nil {
 		return err
 	}
