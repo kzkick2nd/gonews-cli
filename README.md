@@ -9,4 +9,4 @@ Find news with registered words.
 
 ## `show` OPTION
 
-        --past week,month,year (default: year)
+        --past day, week, month, (default=month)
