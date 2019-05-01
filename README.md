@@ -7,9 +7,9 @@ Find news with registered words.
 
 ## USAGE
 
-        gonews subscribe XXX
-        gonews describe XXX
-        gonews show
+        $ gonews subscribe XXX
+        $ gonews describe XXX
+        $ gonews show
 
 ## `show` OPTION
 
