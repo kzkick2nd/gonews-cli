@@ -63,7 +63,7 @@ func main() {
 		for _, v := range keywords {
 			s, _ := searchQuery(v)
 			fmt.Println(s)
-			time.Sleep(1 * time.Second)
+			time.Sleep(time.Second / 2)
 		}
 	}
 }
