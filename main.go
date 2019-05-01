@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -24,7 +25,7 @@ func main() {
 	// OK API叩く
 	// OK 表示する
 	// OK 整形する
-	// 期間指定に対応
+	// OK 期間指定に対応
 
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -63,14 +64,18 @@ func main() {
 		}
 
 		for _, v := range keywords {
-			s, err := searchQuery(v)
+			s, err := searchQuery(v, period)
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
 			fmt.Println("`" + v + "`")
-			fmt.Println(s)
-			time.Sleep(time.Second / 2)
+			if len(s) == 0 {
+				fmt.Println("No results.")
+			} else {
+				fmt.Println(s)
+				time.Sleep(time.Second / 2)
+			}
 		}
 	}
 }
@@ -178,11 +183,12 @@ type NewsAnswer struct {
 	} `json: "value"`
 }
 
-func searchQuery(term string) (string, error) {
+func searchQuery(term, period string) (string, error) {
 	// Verify the endpoint URI and replace the token string with a valid subscription key.
 	const endpoint = "https://japaneast.api.cognitive.microsoft.com/bing/v7.0/news/search"
 	token := os.Getenv("AZURE_COGNITIVE_KEY")
 	searchTerm := term
+	searchPeriod := strings.Title(period)
 
 	// Declare a new GET request.
 	req, err := http.NewRequest("GET", endpoint, nil)
@@ -194,6 +200,7 @@ func searchQuery(term string) (string, error) {
 	// Add the query to the request.
 	param := req.URL.Query()
 	param.Add("q", searchTerm)
+	param.Add("freshness", searchPeriod)
 	req.URL.RawQuery = param.Encode()
 
 	// Insert the subscription-key header.
