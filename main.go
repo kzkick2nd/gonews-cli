@@ -40,6 +40,14 @@ func main() {
 			os.Exit(1)
 		}
 	}
+	if command == "describe" {
+		// 登録単語を削除する
+		err := removeKeyword(listFilePath, keyword)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+	}
 	if command == "show" {
 		// 登録単語と期間で検索する
 		if period == "" {
@@ -74,6 +82,10 @@ func writeKeywords(path, keyword string) error {
 	defer w.Close()
 	_, err = fmt.Fprintf(w, " %s\n", keyword)
 	return err
+}
+
+func removeKeyword(path, keyword string) error {
+	return nil
 }
 
 func readKeywords(path string) ([]string, error) {
