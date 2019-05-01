@@ -20,8 +20,9 @@ func main() {
 	// OK 引数をパース
 	// OK 引数でコントローラー
 	// OK 登録単語リスト（読み書きOK）
-	// API叩く
-	// 表示する
+	// 単語削除
+	// OK API叩く
+	// OK 表示する
 
 	cwd, err := os.Getwd()
 	if err != nil {
