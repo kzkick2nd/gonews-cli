@@ -98,8 +98,8 @@ func removeKeyword(path, keyword string) error {
 	defer f.Close()
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
-		if scanner.Text() != keyword+"\n" {
-			keywords += scanner.Text()
+		if scanner.Text() != keyword {
+			keywords += scanner.Text() + "\n"
 		}
 	}
 
