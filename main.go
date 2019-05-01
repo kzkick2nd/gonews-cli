@@ -45,9 +45,16 @@ func main() {
 			period = "month"
 		}
 
-		keywords, _ := readKeywords(listFilePath)
+		keywords, err := readKeywords(listFilePath)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
 		for _, v := range keywords {
-			fmt.Println(v)
+			s, _ := searchQuery(v)
+			fmt.Println(s)
+			time.Sleep(1 * time.Second)
 		}
 	}
 }
