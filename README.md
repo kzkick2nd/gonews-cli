@@ -4,4 +4,9 @@ Find news with registered words.
 ## USAGE
 
         gonews subscribe XXX
-        gonews show --past week,month,year (default: year)
+        gonews describe XXX
+        gonews show
+
+## `show` OPTION
+
+        --past week,month,year (default: year)
