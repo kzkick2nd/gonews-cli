@@ -23,7 +23,7 @@ func main() {
 	// OK 単語削除
 	// OK API叩く
 	// OK 表示する
-	// 整形する
+	// OK 整形する
 	// 期間指定に対応
 
 	cwd, err := os.Getwd()
@@ -68,6 +68,7 @@ func main() {
 				fmt.Println(err)
 				os.Exit(1)
 			}
+			fmt.Println("`" + v + "`")
 			fmt.Println(s)
 			time.Sleep(time.Second / 2)
 		}
@@ -226,7 +227,7 @@ func searchQuery(term string) (string, error) {
 	// Iterate over search results and print the result name and URL.
 	var text string
 	for _, result := range ans.Value {
-		text += result.Name + " " + result.URL + "\n"
+		text += result.Name + "\n" + result.URL + "\n\n"
 	}
 	return text, nil
 }
