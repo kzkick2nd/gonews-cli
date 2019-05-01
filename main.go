@@ -23,6 +23,8 @@ func main() {
 	// OK 単語削除
 	// OK API叩く
 	// OK 表示する
+	// 整形する
+	// 期間指定に対応
 
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -63,7 +65,7 @@ func main() {
 		for _, v := range keywords {
 			s, _ := searchQuery(v)
 			fmt.Println(s)
-			time.Sleep(time.Second / 2)
+			time.Sleep(1 * time.Second)
 		}
 	}
 }
