@@ -63,7 +63,11 @@ func main() {
 		}
 
 		for _, v := range keywords {
-			s, _ := searchQuery(v)
+			s, err := searchQuery(v)
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(1)
+			}
 			fmt.Println(s)
 			time.Sleep(1 * time.Second)
 		}
