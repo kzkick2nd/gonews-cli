@@ -69,7 +69,7 @@ func main() {
 				os.Exit(1)
 			}
 			fmt.Println(s)
-			time.Sleep(1 * time.Second)
+			time.Sleep(time.Second / 2)
 		}
 	}
 }
