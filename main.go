@@ -20,7 +20,7 @@ func main() {
 	// OK 引数をパース
 	// OK 引数でコントローラー
 	// OK 登録単語リスト（読み書きOK）
-	// 単語削除
+	// OK 単語削除
 	// OK API叩く
 	// OK 表示する
 
@@ -85,6 +85,37 @@ func writeKeywords(path, keyword string) error {
 }
 
 func removeKeyword(path, keyword string) error {
+	var keywords string
+
+	// Read
+	f, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		if scanner.Text() != keyword+"\n" {
+			keywords += scanner.Text()
+		}
+	}
+
+	// Remove
+	err = os.Remove(path)
+	if err != nil {
+		return err
+	}
+
+	// Create
+	w, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0666)
+	if err != nil {
+		return err
+	}
+	defer w.Close()
+	_, err = fmt.Fprint(w, keywords)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
