@@ -1,7 +1,7 @@
 # gonews-cli
-Find news with registered words.
+Find articles from Bing News with registered keywords.
 
-## SETUP
+## CONF
 
         $ export AZURE_COGNITIVE_KEY=YOUR_AZURE_API_KEY
 
