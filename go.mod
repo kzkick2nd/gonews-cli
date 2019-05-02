@@ -1,3 +1,3 @@
-module gonews-cli
+module gonews
 
 go 1.12
