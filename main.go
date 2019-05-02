@@ -43,6 +43,7 @@ func main() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
+		fmt.Println("\n Subscribed: " + keyword + "\n")
 	}
 	if command == "describe" {
 		// 登録単語を削除する
@@ -51,6 +52,7 @@ func main() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
+		fmt.Println("\n Described: " + keyword + "\n")
 	}
 	if command == "show" {
 		// 登録単語と期間で検索する
@@ -69,7 +71,7 @@ func main() {
 				fmt.Println(err)
 				os.Exit(1)
 			}
-			fmt.Println("\n\n  " + v)
+			fmt.Println("\n  " + v)
 			if s == "" {
 				fmt.Println("   No results.")
 			} else {
@@ -77,7 +79,7 @@ func main() {
 				time.Sleep(time.Second / 2)
 			}
 		}
-		fmt.Println("\n\n")
+		fmt.Println("\n")
 	}
 }
 
@@ -235,7 +237,7 @@ func searchQuery(term, period string) (string, error) {
 	// Iterate over search results and print the result name and URL.
 	var text string
 	for _, result := range ans.Value {
-		text += "     ▪ " + result.Name + "\n      " + result.URL + "\n\n"
+		text += "     ▪ " + result.Name + "\n      " + result.URL + "\n"
 	}
 	return text, nil
 }
