@@ -35,6 +35,7 @@ func main() {
 	listFilePath := filepath.Join(cwd, keywordsFilename)
 
 	period, command, keyword := parseArgs()
+
 	if command == "subscribe" {
 		// 登録単語を追加する
 		err := writeKeywords(listFilePath, keyword)
@@ -62,21 +63,21 @@ func main() {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-
 		for _, v := range keywords {
 			s, err := searchQuery(v, period)
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
-			fmt.Println("`" + v + "`")
-			if len(s) == 0 {
-				fmt.Println("No results.")
+			fmt.Println("\n\n  " + v)
+			if s == "" {
+				fmt.Println("   No results.")
 			} else {
 				fmt.Println(s)
 				time.Sleep(time.Second / 2)
 			}
 		}
+		fmt.Println("\n\n")
 	}
 }
 
@@ -234,7 +235,7 @@ func searchQuery(term, period string) (string, error) {
 	// Iterate over search results and print the result name and URL.
 	var text string
 	for _, result := range ans.Value {
-		text += result.Name + "\n" + result.URL + "\n\n"
+		text += "     ▪ " + result.Name + "\n      " + result.URL + "\n\n"
 	}
 	return text, nil
 }
